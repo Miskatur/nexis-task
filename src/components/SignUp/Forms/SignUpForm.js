@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { HiArrowNarrowLeft, HiArrowNarrowRight } from "react-icons/hi";
+import { toast } from 'react-hot-toast';
 
 const SignUpForm = () => {
     const navigate = useNavigate()
@@ -31,7 +32,12 @@ const SignUpForm = () => {
         })
             .then(res => res.json())
             .then(data => {
-                navigate('/login')
+                if (data.success) {
+                    navigate('/login')
+                }
+                else {
+                    toast.error(data.error)
+                }
             })
 
     }
@@ -47,7 +53,7 @@ const SignUpForm = () => {
                             {errors.firstName && errors.firstName.type === "required" && <p className='text-red-600 text-xs text-left' role="alert">This field is required</p>}
                         </div>
                         <div className="mb-10">
-                            <input type="text" {...register("lastName", { required: true })} placeholder="Write a First name" className="border-b border-b-[#A4A4A4] w-full bg-[#FCFDFE] py-3 px-5 text-black  placeholder-[#B4B4B4] outline-none focus:border-theme-2nd focus-visible:shadow-none" />
+                            <input type="text" {...register("lastName", { required: true })} placeholder="Write a Last name" className="border-b border-b-[#A4A4A4] w-full bg-[#FCFDFE] py-3 px-5 text-black  placeholder-[#B4B4B4] outline-none focus:border-theme-2nd focus-visible:shadow-none" />
                             {errors.lastName && errors.lastName.type === "required" && <p className='text-red-600 text-xs text-left' role="alert">This field is required</p>}
                         </div>
                         <div className="text-center mb-10 md:mb-20 lg:mb-[100px] flex gap-4">

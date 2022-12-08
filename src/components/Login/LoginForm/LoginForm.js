@@ -12,7 +12,6 @@ const LoginForm = () => {
         navigate('/attendance')
     }
 
-
     const handleUserLogin = data => {
         const userData = {
             email: data.email,
@@ -61,7 +60,7 @@ const LoginForm = () => {
 
 
             </form>
-            <p className='text-center text-[#7E7E7E] text-sm'>Don't have an account? <Link to='/signup' className='uppercase text-theme-primary text-sm font-semibold hover:underline'>SignUp Here</Link></p>
+            <p className='text-center text-[#7E7E7E] text-sm'>Don't have an account? <Link to='/' className='uppercase text-theme-primary text-sm font-semibold hover:underline'>SignUp Here</Link></p>
 
 
         </div>
